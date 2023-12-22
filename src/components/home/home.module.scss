@@ -1,0 +1,137 @@
+.home-slidebanner {
+  background: url(../../../public/images/bannerdesktopmain1.jpg) no-repeat
+    bottom / cover;
+  padding: 0 0 38% 0;
+  margin-top: 32px;
+  position: relative;
+
+  @media (max-width: 767px) {
+    background: url(../../../public/images/bannermobile3.jpg) no-repeat center /
+      cover;
+    padding: 0 0 140.5% 0;
+    text-align: left;
+  }
+}
+
+.intro-main {
+  margin: 80px 0px;
+  .newsbtn {
+    font-weight: 600;
+    border-radius: 5px !important;
+  }
+  h2 {
+    font-size: 40px;
+    margin-bottom: 30px;
+  }
+
+  p {
+    margin-bottom: 30px;
+  }
+
+  .intro-image {
+    border-radius: 5px;
+    @media (max-width: 767px) {
+      width: 100%;
+      height: auto;
+    }
+  }
+}
+
+.ingredient-main {
+  margin: 80px 0px;
+  .ingredient-side-content {
+    margin: 70px 0px;
+  }
+  .ingredient-image {
+    @media (max-width: 767px) {
+      width: 100%;
+      height: auto;
+    }
+  }
+}
+.benfits{
+    color: #d7b56d;
+    li{
+        font-size: 20px;
+        margin-bottom: 20px;
+        font-family: 'Montserrat', sans-serif;
+    }
+    .intro-image {
+        border-radius: 5px;
+        // margin-bottom: 30px;
+        @media (max-width: 767px) {
+          width: 100%;
+          height: auto;
+        }
+      }
+      background-image: url(../../../public/images/all-banner.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;
+}
+
+.testimony-main {
+  margin: 80px 0px;
+  .testimonial-body {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: -3px 3px 3px 3px #d7b56d;
+    .view-btn{
+      cursor: pointer;
+      font-weight: 700;
+    }
+    .testi-image{
+      width: 100% !important;
+      height: 10% !important;
+    }
+  }
+
+//   h3 {
+//     font-size: 48px;
+//     margin: 30px 0px;
+//   }
+
+//   h6 {
+//     font-size: 24px !important;
+//   }
+}
+
+.blogdetail1 {
+  padding-top: 40px;
+  padding-bottom: 40px;
+
+  h3 {
+    height: 17px;
+    font-size: 1.4rem !important;
+    line-height: 1.5;
+    font-weight: 800;
+  }
+
+  .blogdetailflex {
+    margin-top: 40px;
+
+    @media (max-width: 767px) {
+      margin-top: 94px;
+    }
+  }
+
+  .blogdetailP {
+    @media (max-width: 767px) {
+      margin-top: 20px;
+    }
+  }
+
+  .blogdetailP2 {
+    margin-top: 20px;
+
+    @media (max-width: 767px) {
+      margin-top: 0px;
+    }
+  }
+
+  .blogdetails-image {
+    max-width: 620px;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+}

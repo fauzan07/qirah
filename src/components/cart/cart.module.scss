@@ -1,0 +1,28 @@
+.breadcrumb {
+    margin-top: 40px;
+    background-image: url(../../../public/images/footer-bg.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    .content {
+        padding: 80px 0px;
+    }
+}
+
+.cart-section {
+    margin: 60px;
+
+    a {
+        text-decoration: none;
+    }
+
+    .payment-section {
+        background-color: rgb(116, 172, 116);
+        color: black;
+    }
+}
+
+.productcart-image {
+    width: 85px !important;
+    height: auto;
+}

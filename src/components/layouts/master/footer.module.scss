@@ -1,0 +1,94 @@
+#footer {
+  position: relative;
+  font-weight: 400;
+  color: #d7b56d;
+  background-image: url(../../../../public/images/aboutusmain.jpg);
+
+
+ 
+
+  #footer-content {
+    font-size: 1rem !important;
+    line-height: 1.5 !important;
+  }
+
+  a {
+    color: #d7b56d;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    transition: 0.3s;
+  }
+
+  ul {
+    padding-left: 17px !important;
+  }
+
+  .widget-logo {
+    width: 30% !important;
+    height: auto;
+    padding-bottom: 10px;
+  }
+
+  .contact-logo {
+    width: 22px !important;
+    // height: auto;
+    padding-bottom: 5px;
+    margin-right: 5px !important;
+  }
+
+  // Contact list
+
+  .footer-contact h3 {
+    margin-left: 26px !important;
+  }
+
+  .footer-contact ul {
+    list-style: none !important;
+    line-height: 3;
+  }
+
+  .contact-logo1 {
+    width: 22px !important;
+    // height: auto;
+    padding-bottom: 5px;
+    margin-right: 5px !important;
+  }
+
+  .contact-logo2 {
+    width: 22px !important;
+    // height: auto;
+    padding-bottom: 5px;
+    margin-right: 5px !important;
+  }
+
+
+  .footer-links {
+    padding-right: 10px;
+  }
+
+  .newsbtn {
+    background-color: #000;
+    color: #d7b56d;
+    border: 2px solid #d7b56d;
+  }
+  .input-group{
+    border: 2px solid #d7b56d;
+  }
+  ::placeholder{
+    color: #d7b56d;
+  }
+
+
+  hr {
+    margin: 0px !important;
+    opacity: .85 !important;
+  }
+
+
+  #footer-Copy {
+    p {
+      margin-top: 7px !important;
+      margin-bottom: 7px !important;
+    }
+  }
+}

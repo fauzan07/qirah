@@ -1,0 +1,226 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-size: 16px;
+  font-family: "Gentium Basic", serif;
+  overflow-x: hidden;
+  padding-top: 50px;
+  line-height: 1.5;
+  background-color: #fff;
+}
+
+img {
+  // width: 100%;
+  height: auto;
+}
+
+/*--------section header start---------*/
+
+.nav-link {
+  color: #000 !important;
+  font-size: 0.9em;
+  font-family: "Gentium Basic", serif;
+  font-weight: 600;
+}
+
+.bg-light {
+  background-color: #fff !important;
+}
+
+.navbar.scrolled {
+  background: #0d6efd !important;
+  /* NON-IE */
+  transition: background-color 0.5s;
+  -webkit-transition: background-color 0.5s;
+}
+
+.navbar.scrolled .nav-link {
+  color: #fff !important;
+}
+
+.navbar-nav .dropdown-menu.drop-scrolled {
+  background: #0d6efd !important;
+  /* NON-IE */
+}
+
+#header11 {
+  padding: 0px 100px !important;
+}
+
+@media screen and (max-width: 600px) {
+  .nav-link {
+    padding-left: 10px !important;
+  }
+
+  #header11 {
+    padding: 0px 30px !important;
+  }
+}
+
+/*--------section header end---------*/
+
+.owl-carousel .owl-nav button.owl-prev,
+.owl-carousel .owl-nav button.owl-next {
+  background-color: #000 !important;
+  color: #d7b56d !important;
+  border-radius: 50%;
+}
+
+.owl-nav .owl-prev,
+.owl-nav .owl-next {
+  height: 40px;
+  width: 40px;
+  background-position: 0 0;
+  cursor: pointer;
+  margin: 10px 5px;
+}
+
+.owl-nav {
+  text-align: center !important;
+}
+
+.owl-carousel .owl-stage {
+  display: flex;
+}
+
+.flag-dropdown {
+  top: 100% !important;
+  left: -80px !important;
+}
+
+.carousel-indicators [data-bs-target] {
+  background-color: #000 !important;
+}
+
+// .accordion-item {
+//   margin: 20px 0px !important;
+// }
+
+.carousel-indicators {
+  margin-bottom: -25px !important;
+  // margin-top: 5px;
+}
+
+.accordion-button {
+//   font-size: 1.1rem;
+//   line-height: 1.1;
+  font-weight: 800;
+  font-family: 'Montserrat', sans-serif;
+//   padding: 20px 10px !important;
+//   margin: -16px 0px !important;
+}
+.accordion-body{
+  font-weight: lighter;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.accordion{
+  --bs-accordion-active-color: #d7b56d !important;
+  --bs-accordion-active-bg: #000 !important;
+  --bs-accordion-border-width: 2px !important;
+  // --bs-accordion-btn-focus-border-color: #d7b56d !important;
+  --bs-accordion-active-color:#d7b56d !important;
+  --bs-accordion-btn-focus-box-shadow: 0 0 0 0.15rem #d7b56d;
+  --bs-accordion-bg: #000;
+  --bs-accordion-color:#d7b56d !important;
+  --bs-accordion-border-color:#d7b56d !important;
+  --bs-accordion-btn-color:#d7b56d ;
+  // --bs-accordion-btn-focus-border-color: none !important;
+//   --bs-accordion-btn-focus-box-shadow: none;
+  --bs-accordion-btn-icon: url(../../public/images/plus.png) !important;
+  --bs-accordion-btn-active-icon: url(../../public/images/minus.png) !important;
+}
+
+iframe {
+  width: 100%;
+
+  @media (max-width: 767px) {
+    height: 200px;
+  }
+}
+
+.award1-main {
+  .owl-nav {
+    text-align: center !important;
+    margin-top: 90px !important;
+
+    @media (max-width: 767px) {
+      margin-top: 64px !important;
+    }
+  }
+
+  .owl-item {
+    &.active {
+      border: none !important;
+    }
+  }
+}
+
+// News Letter Section
+.form-control {
+  border-radius: 0px !important;
+}
+
+.btn {
+  border-radius: 0px !important;
+}
+.nav-link {
+  color: #d7b56d !important;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.btn-outline-secondary:hover{
+background-color: #fff;
+color: #000;
+font-weight: 600;
+border: 2px solid #d7b56d;
+}
+.btn-outline-secondary{
+  color: #000;
+  font-weight: 600;
+  border: 2px solid #d7b56d;
+  border-radius: 5px !important;
+  font-family: 'Montserrat', sans-serif;
+
+}
+.btn-outline-dark {
+  color: #d7b56d !important;
+  font-weight: 600;
+  background-color: #000;
+  border: 2px solid #d7b56d !important;
+  border-radius: 5px !important;
+  font-family: 'Montserrat', sans-serif;
+
+}
+.btn-outline-dark:hover{
+  background-color: #fff;
+}
+h2, h3, h6{
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+}
+h2{
+  font-size: 40px;
+}
+h3{
+  font-size: 30px;
+}
+p{
+  font-family: 'Montserrat', sans-serif; 
+}
+.form-label{
+  font-family: 'Montserrat', sans-serif;
+  color: #d7b56d;
+  font-weight: 600;
+}
+.form-control{
+  border: 1px solid #d7b56d !important;
+}
+

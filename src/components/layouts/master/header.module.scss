@@ -1,0 +1,30 @@
+.nav-clr{
+    background-color: #000;
+    border-bottom:3px solid #D7B56D !important;
+    .togg-btn{
+        color: #D7B56D;
+        font-size: 40px;
+        border: 2px solid #d7b56d;
+        border-radius: 5px;
+    }
+    .cart-btn{
+        border: 2px solid #D7B56D;
+        border-radius: 5px !important;
+    .cart-icon{
+        color: #D7B56D;
+    }
+    .cart-badge{
+        background-color: #D7B56D !important;
+    }
+}
+.cart-btn:hover{
+    border: 2px solid #D7B56D;
+        border-radius: 5px !important;
+}
+.pad-a{
+    padding-top: 19px;
+}
+.pad-a1{
+    padding-top: 13px;
+}
+}
