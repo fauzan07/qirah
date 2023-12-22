@@ -7,6 +7,7 @@ import { IoReorderThree } from "react-icons/io5";
 import { FaCartPlus } from "react-icons/fa";
 import styles from "../master/header.module.scss";
 import { isMobile } from "react-device-detect";
+import { useSelector } from "react-redux";
 if (typeof window !== "undefined") {
   window.dataLayer = window.dataLayer || [];
   function gtag() {
@@ -24,6 +25,8 @@ const Header = () => {
       // }
     });
   }
+
+  const quantity = useSelector(state => state.cart.quantity)
 
   return (
     <>
@@ -123,14 +126,14 @@ const Header = () => {
                 <Link className={`${styles['pad-a']} nav-link pe-5`} href="/contact">
                   Contact
                 </Link>
-                <Link className="nav-link pe-5" href="/">
+                <Link className="nav-link pe-5" href="/cart">
                   <button
                     type="button"
                     className={`${styles['cart-btn']} btn position-relative`}
                   >
                     <span className={styles['cart-icon']}><FaCartPlus /></span>
                     <span className={`${styles['cart-badge']} position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger`}>
-                      1
+                      {quantity}
                       <span className="visually-hidden">unread messages</span>
                     </span>
                   </button>

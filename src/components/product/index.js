@@ -10,10 +10,15 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import Form from 'react-bootstrap/Form';
+import { addProduct } from '../../redux/cartRedux';
+import { useDispatch } from 'react-redux';
 
 const Product = ({ productData: initialProductData }) => {
     const [productData, setProductData] = useState(initialProductData);
     const [selectedVariants, setSelectedVariants] = useState({});
+    const [product, setProduct] = useState({});
+    const [quantity, setQuantity] = useState(0);
+    const dispatch = useDispatch()
 
     const handleVariantSelect = (productId, variant) => {
         setSelectedVariants((prevVariants) => ({
@@ -41,6 +46,15 @@ const Product = ({ productData: initialProductData }) => {
             unsubscribe();
         };
     }, []);
+
+    const handleClick = () => {
+        dispatch(addProduct({
+            product,
+            quantity,
+            price: product.price * quantity,
+        }))
+    }
+
 
     return (
         <section className={styles['products-main']}>
@@ -115,8 +129,9 @@ const Product = ({ productData: initialProductData }) => {
                                                 </Dropdown.Item>
                                             </DropdownButton>
                                             <Button
+                                                onClick={handleClick}
                                                 className={styles['newsbtn']}
-                                                variant="outline-secondary" id="button-addon2" href='/cart'>
+                                                variant="outline-secondary" id="button-addon2">
                                                 ADD TO CART
                                             </Button>
                                         </InputGroup>

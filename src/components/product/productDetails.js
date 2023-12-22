@@ -28,6 +28,9 @@ import "slick-carousel/slick/slick-theme.css";
 import { Formik, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
+import { addProduct } from '../../redux/cartRedux';
+import { useDispatch } from 'react-redux';
+
 
 var $ = require("jquery");
 if (typeof window !== "undefined") {
@@ -37,29 +40,31 @@ if (typeof window !== "undefined") {
 const ProductDetailsContainer = ({
   productDetailsData: initialProductDetailsData,
 }) => {
+  const handleFormSubmit = async (values, actions) => {
+    try {
+      await axios.post(
+        "https://software-bazaar-default-rtdb.firebaseio.com/leadform.json",
+        values
+      );
+      actions.resetForm();
+      actions.setSubmitting(false);
+      alert("Form submitted successfully.");
+      window.location.reload();
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      actions.setSubmitting(false);
+    }
+  };
 
-    const handleFormSubmit = async (values, actions) => {
-        try {
-          await axios.post(
-            "https://software-bazaar-default-rtdb.firebaseio.com/leadform.json",
-            values
-          );
-          actions.resetForm();
-          actions.setSubmitting(false);
-          alert("Form submitted successfully.");
-          window.location.reload();
-        } catch (error) {
-          console.error("Error submitting form:", error);
-          actions.setSubmitting(false);
-        }
-      };
-
-      const [isDatePickerFocused, setDatePickerFocused] = useState(false);
+  const [isDatePickerFocused, setDatePickerFocused] = useState(false);
 
   const [selectedVariants, setSelectedVariants] = useState({});
   const [productDetailsData, setProductDetailsData] = useState(
     initialProductDetailsData
   );
+
+  const [product, setProduct] = useState({});
+  const dispatch = useDispatch()
 
   const router = useRouter();
   const { productId } = router.query;
@@ -121,6 +126,15 @@ const ProductDetailsContainer = ({
     setShowReviews(!showReviews);
   };
 
+  const handleClick = () => {
+    dispatch(addProduct({
+      product,
+      ...initialProductDetailsData,
+      quantity,
+      price: postPriceName * quantity
+    }))
+  }
+
   return (
     <>
       <section className={styles["breadcrumb"]}>
@@ -153,16 +167,15 @@ const ProductDetailsContainer = ({
               </Carousel>
             </Col>
             <Col lg={5}>
-              <h3 className="mt-5">{`${postTopicName} (${
-                selectedVariants[productId]?.variantName || "50 ml"
-              })`}</h3>
+              <h3 className="mt-5">{`${postTopicName} (${selectedVariants[productId]?.variantName || "50 ml"
+                })`}</h3>
 
               <div
                 className={`d-flex justify-content-between mt-4 ${styles["product-quantity"]}`}
               >
                 <div>
                   <p>
-                    <strong>$200.00</strong>
+                    <strong>₹{selectedVariants[productId]?.price || postPriceName}.00</strong>
                   </p>
                 </div>
                 {/* <button onClick={handleDecrement}><FaMinus /></button>
@@ -209,11 +222,11 @@ const ProductDetailsContainer = ({
 
               <div className={`${styles["price-box"]} mt-3`}>
                 <Button
+                  onClick={handleClick}
                   style={{ margin: "20px 0px", width: "100%" }}
                   className={styles["newsbtn"]}
                   variant="outline-dark"
                   id="button-addon2"
-                  href="/cart"
                 >
                   Add To Cart
                 </Button>
@@ -265,7 +278,7 @@ const ProductDetailsContainer = ({
                   Reviews
                 </Button>
                 <div>
-                    <ProductTestimony />
+                  <ProductTestimony />
                 </div>
               </Col>
               <Col lg={6}>
@@ -283,7 +296,7 @@ const ProductDetailsContainer = ({
                   Write A Review
                 </Button>
                 <div className={`${styles['rev-form']} my-4 box shadow rounded-4 p-5`}>
-                <Formik
+                  <Formik
                     initialValues={{
                       username: "",
                       location: "",
@@ -310,15 +323,14 @@ const ProductDetailsContainer = ({
                     onSubmit={handleFormSubmit}
                   >
                     {(formik) => (
-                  <Form method="post">
-                    <Form.Group className="mb-3" controlId="formBasicName">
-                      <Form.Label>Name</Form.Label>
-                      <Field
-                            className={`form-control ${
-                              formik.touched.username && formik.errors.username
-                                ? "is-invalid"
-                                : ""
-                            }`}
+                      <Form method="post">
+                        <Form.Group className="mb-3" controlId="formBasicName">
+                          <Form.Label>Name</Form.Label>
+                          <Field
+                            className={`form-control ${formik.touched.username && formik.errors.username
+                              ? "is-invalid"
+                              : ""
+                              }`}
                             type="text"
                             name="username"
                             placeholder="Full name"
@@ -328,16 +340,15 @@ const ProductDetailsContainer = ({
                             component="div"
                             className={`${styles["valid-clr"]} invalid-feedback`}
                           />
-                      {/* <Form.Control type="text" placeholder="Enter Name" /> */}
-                    </Form.Group>
-                    <Form.Group className="mb-3" controlId="formBasicEmail">
-                      <Form.Label>Email address</Form.Label>
-                      <Field
-                            className={`form-control ${
-                              formik.touched.email && formik.errors.email
-                                ? "is-invalid"
-                                : ""
-                            }`}
+                          {/* <Form.Control type="text" placeholder="Enter Name" /> */}
+                        </Form.Group>
+                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                          <Form.Label>Email address</Form.Label>
+                          <Field
+                            className={`form-control ${formik.touched.email && formik.errors.email
+                              ? "is-invalid"
+                              : ""
+                              }`}
                             type="email"
                             name="email"
                             placeholder="Email address"
@@ -347,18 +358,18 @@ const ProductDetailsContainer = ({
                             component="div"
                             className={`${styles["valid-clr"]} invalid-feedback`}
                           />
-                      {/* <Form.Control type="email" placeholder="Enter email" /> */}
-                    </Form.Group>
-                    {/* <Form.Group className="mb-3" controlId="formBasicNumber">
+                          {/* <Form.Control type="email" placeholder="Enter email" /> */}
+                        </Form.Group>
+                        {/* <Form.Group className="mb-3" controlId="formBasicNumber">
                       <Form.Label>Number</Form.Label>
                       <Form.Control type="number" placeholder="Enter Number" />
                     </Form.Group> */}
-                    <Form.Group
-                      className="mb-3"
-                      controlId="exampleForm.ControlTextarea1"
-                    >
-                      <Form.Label>Message</Form.Label>
-                      {/* <Field
+                        <Form.Group
+                          className="mb-3"
+                          controlId="exampleForm.ControlTextarea1"
+                        >
+                          <Form.Label>Message</Form.Label>
+                          {/* <Field
                             className={`form-control ${
                               formik.touched.message && formik.errors.message
                                 ? "is-invalid"
@@ -374,17 +385,17 @@ const ProductDetailsContainer = ({
                             component="div"
                             className={`${styles["valid-clr"]} invalid-feedback`}
                           /> */}
-                      <Form.Control
-                        as="textarea"
-                        placeholder="Type Message..."
-                        rows={3}
-                      />
-                    </Form.Group>
-                    <Button variant="outline-dark" type="submit">
-                      Submit
-                    </Button>
-                  </Form>
-                  )}
+                          <Form.Control
+                            as="textarea"
+                            placeholder="Type Message..."
+                            rows={3}
+                          />
+                        </Form.Group>
+                        <Button variant="outline-dark" type="submit">
+                          Submit
+                        </Button>
+                      </Form>
+                    )}
                   </Formik>
                 </div>
               </Col>

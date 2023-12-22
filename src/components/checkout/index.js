@@ -1,11 +1,26 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './checkout.module.scss'
 import Link from 'next/link';
 import Image from 'next/image';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import { useSelector } from "react-redux";
+import StripeCheckout from 'react-stripe-checkout';
+
+const KEY = process.env.NEXT_PUBLIC_REACT_APP_STRIPE;
+console.log("Key", KEY)
 
 const index = () => {
+
+  const cart = useSelector((state) => state.cart);
+  const [stripeToken, setStripeToken] = useState(null);
+
+  const onToken = (token) => {
+    setStripeToken(token);
+  }
+
+  console.log(stripeToken)
+
   return (
     <section className={styles['checkout-section']}>
       <div className='container'>
@@ -16,27 +31,17 @@ const index = () => {
               <span className="badge badge-secondary badge-pill">3</span>
             </h4>
             <ul className="list-group mb-3">
-              <li className="list-group-item d-flex justify-content-between lh-condensed">
-                <div>
-                  <h6 className="my-0">Product name</h6>
-                  <small className="text-muted">Brief description</small>
-                </div>
-                <span className="text-muted">$12</span>
-              </li>
-              <li className="list-group-item d-flex justify-content-between lh-condensed">
-                <div>
-                  <h6 className="my-0">Second product</h6>
-                  <small className="text-muted">Brief description</small>
-                </div>
-                <span className="text-muted">$8</span>
-              </li>
-              <li className="list-group-item d-flex justify-content-between lh-condensed">
-                <div>
-                  <h6 className="my-0">Third item</h6>
-                  <small className="text-muted">Brief description</small>
-                </div>
-                <span className="text-muted">$5</span>
-              </li>
+              {cart.products.map((product) => {
+                return (
+                  <li className="list-group-item d-flex justify-content-between lh-condensed">
+                    <div>
+                      <h6 className="my-0">{product.postTopicName}</h6>
+                      <small className="text-muted">{parse(`${product.postLongDetail.substring(0, 50)}...`)}</small>
+                    </div>
+                    <span className="text-muted">{product.price}</span>
+                  </li>
+                )
+              })}
               <li className="list-group-item d-flex justify-content-between bg-light">
                 <div className="text-success">
                   <h6 className="my-0">Promo code</h6>
@@ -204,12 +209,23 @@ const index = () => {
               </div>
               <hr className="mb-4" />
               {/* <button className="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button> */}
-              <Button
-                style={{ marginBottom: '5px' }}
-                className={styles['newsbtn']}
-                variant="outline-secondary" id="button-addon2" href='/cart'>
-                Continue to checkout
-              </Button>
+              <StripeCheckout
+                name="Qirah Test"
+                image='https://qirah.netlify.app/_ipx/w_256,q_75/%2Fimages%2Flogo.jpg?url=%2Fimages%2Flogo.jpg&w=256&q=75'
+                billingAddress
+                shippingAddress
+                description={`Your total is Rs${cart.total}`}
+                amount={cart.total * 100}
+                token={onToken}
+                stripeKey={KEY}
+              >
+                <Button
+                  style={{ marginBottom: '5px' }}
+                  className={styles['newsbtn']}
+                  variant="outline-secondary" id="button-addon2">
+                  Continue to checkout
+                </Button>
+              </StripeCheckout>
             </form>
           </div>
         </div>
