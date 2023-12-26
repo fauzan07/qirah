@@ -22,7 +22,7 @@ const index = () => {
                 </Container>
             </section>
             <section className={styles['cart-section']}>
-                <Container className=' py-5 h-100'>
+                <Container className=' pb-5 h-100'>
                     <Row className='flex justify-content-center align-items-center h-100'>
                         <div className={`${styles['mob-card']} card`}>
                             <div className="card-body p-4">
@@ -65,9 +65,9 @@ const index = () => {
                                                             </div>
                                                         </div>
                                                         <div className="d-flex flex-row align-items-center">
-                                                            <div className={styles['product-quantity']} style={{ width: "100px" }}>
+                                                            <div className={styles['product-quantity']} style={{ width: "80px" }}>
                                                                 <Image 
-                                                                    src='/images/plus.png'
+                                                                    src='/images/minus.png'
                                                                     height='10'
                                                                     width='10'
                                                                     objectFit='fill'
@@ -77,7 +77,7 @@ const index = () => {
                                                                 />
                                                                 <h5 className="fw-normal ps-3 pe-3 mb-0">{product.quantity}</h5>
                                                                 <Image 
-                                                                    src='/images/minus.png'
+                                                                    src='/images/plus.png'
                                                                     height='10'
                                                                     width='10'
                                                                     objectFit='fill'
@@ -99,16 +99,23 @@ const index = () => {
                                 </Col>
                             </div>
                         </div >
+                        <div className={`${styles['chckout-div']} text-end mt-3`}>
+                        
+                            <p>Item total<span className='ms-5'>$200</span></p>
+                            <p>Delivery Fees<span className='ms-5'>FREE</span></p>
+                            <p>Grand Total<span className='ms-5'>$200</span></p>
+                        
                         <Link href="/checkout">
                             <Button
-                                style={{ margin: '30px 0px 30px', maxWidth: '250px' }}
-                                className={`${styles['newsbtn']} d-flex`}
+                                style={{ margin: '10px 0px 30px', maxWidth: '250px' }}
+                                className={`${styles['newsbtn']} `}
                                 variant="outline-dark" id="button-addon2">
                                 <span className='px-2' style={{ marginTop: '-2px' }}><CiLock /></span>
                                 <span className='px-2'>Checkout</span>
                                 <span className='px-2'>Rs. {cart.total}.00</span>
                             </Button>
                         </Link>
+                        </div>
                         <div className='text-center py-5'><h3>YOU MAY ALSO LIKE</h3></div>
                         <div className='row'>
                             <div className='col-lg-3 text-center'>
