@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Container, Row, Col } from 'react-bootstrap';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -42,14 +42,14 @@ const index = () => {
                                         </div>
                                     </div>
                                     {cart.products.map((product) => {
-                                        // const firstImage = product.postImage.length > 0 ? product.postImage[3] : '';
+                                        const firstImage = product.postImage.length > 0 ? product.postImage[3] : '';
                                         return (
                                             <div className="card mb-3">
                                                 <div className="card-body">
                                                     <div className="d-flex justify-content-between">
                                                         <div className="d-flex flex-row align-items-center">
                                                             <div>
-                                                                {/* <Image
+                                                                <Image
                                                                     className={styles['productcart-image']}
                                                                     objectFit="containt"
                                                                     layout='responsive'
@@ -57,7 +57,7 @@ const index = () => {
                                                                     width="81"
                                                                     alt="product_img"
                                                                     src={firstImage}
-                                                                /> */}
+                                                                />
                                                             </div>
                                                             <div className="ms-3">
                                                                 <h5>{product.postTopicName}</h5>

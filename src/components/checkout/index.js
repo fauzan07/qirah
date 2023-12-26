@@ -1,23 +1,41 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styles from './checkout.module.scss'
 import Link from 'next/link';
 import Image from 'next/image';
 import Button from 'react-bootstrap/Button';
+import parse from 'html-react-parser';
 import Card from 'react-bootstrap/Card';
 import { useSelector } from "react-redux";
 import StripeCheckout from 'react-stripe-checkout';
+import { userRequest } from '../../requestMethods';
+import { useRouter } from 'next/router';
 
 const KEY = process.env.NEXT_PUBLIC_REACT_APP_STRIPE;
-console.log("Key", KEY)
 
 const index = () => {
 
   const cart = useSelector((state) => state.cart);
   const [stripeToken, setStripeToken] = useState(null);
+  const history = useRouter()
 
   const onToken = (token) => {
     setStripeToken(token);
   }
+
+  useEffect(() => {
+    const makeRequest = async () => {
+      try {
+        const res = await userRequest.post("/complete/payment", {
+          tokenId: stripeToken.id,
+          amount: cart.total * 100,
+        });
+        history.push("/success", { data: res.data })
+      } catch {
+
+      }
+    }
+    stripeToken && makeRequest()
+  }, [stripeToken, cart.total, history]);
 
   console.log(stripeToken)
 
@@ -50,8 +68,8 @@ const index = () => {
                 <span className="text-success">-$5</span>
               </li>
               <li className="list-group-item d-flex justify-content-between">
-                <span>Total (USD)</span>
-                <strong>$20</strong>
+                <span>Total (Rs)</span>
+                <strong>{cart.total}.00</strong>
               </li>
             </ul>
 
@@ -211,7 +229,7 @@ const index = () => {
               {/* <button className="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button> */}
               <StripeCheckout
                 name="Qirah Test"
-                image='https://qirah.netlify.app/_ipx/w_256,q_75/%2Fimages%2Flogo.jpg?url=%2Fimages%2Flogo.jpg&w=256&q=75'
+                image='https://m.media-amazon.com/images/I/51vwDpwSeDL._SL1024_.jpg'
                 billingAddress
                 shippingAddress
                 description={`Your total is Rs${cart.total}`}
