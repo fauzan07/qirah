@@ -1,11 +1,16 @@
 .breadcrumb {
-    margin-top: 40px;
-    background-image: url(../../../public/images/footer-bg.png);
+    margin-top: 32px;
+    background-image: url(../../../public/images/productbanner.jpg);
     background-repeat: no-repeat;
     background-size: cover;
 
     .content {
         padding: 80px 0px;
+        color: #d7b56d;
+        a {
+            text-decoration: none;
+            color: #d7b56d;
+        }
     }
 }
 
@@ -15,14 +20,44 @@
     a {
         text-decoration: none;
     }
-
+    .mob-card{
+        @media(max-width:767px){
+            width: 100% !important;
+        }
+.box-head-mob{
+    @media(max-width: 767px){
+        display: block !important;
+    }
+    .box-p-mob{
+        @media(max-width: 767px){
+            margin-top: 15px;
+        }
+    }
+}
     .payment-section {
         background-color: rgb(116, 172, 116);
         color: black;
     }
+    .content-box-mob{
+        @media(max-width:767px){
+            display: block !important;
+        }
+    .productcart-image {
+        width: 85px !important;
+        height: auto;
+    }
+    .product-quantity{
+   display: flex;
+   .before-img{
+    width: 10px !important;
+    height: 15px !important;
+    margin-top: 5px;
+   }
+   .after-img{
+    width: 10px !important;
+   }
+    }
+}
+    }
 }
 
-.productcart-image {
-    width: 85px !important;
-    height: auto;
-}

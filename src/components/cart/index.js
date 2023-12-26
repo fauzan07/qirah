@@ -16,28 +16,28 @@ const index = () => {
             <section className={styles['breadcrumb']}>
                 <Container>
                     <Row className={`text-center ${styles['content']}`}>
-                        <h3>Cart</h3>
-                        <p><span>Home</span> <span>/</span><span> Cart</span></p>
+                        <h2>Cart</h2>
+                        <p><span><Link href='/#'>Home</Link></span> <span>/</span><span> Cart</span></p>
                     </Row>
                 </Container>
             </section>
             <section className={styles['cart-section']}>
                 <Container className=' py-5 h-100'>
                     <Row className='flex justify-content-center align-items-center h-100'>
-                        <div className="card">
+                        <div className={`${styles['mob-card']} card`}>
                             <div className="card-body p-4">
                                 <Col lg={12}>
                                     <h5 className="mb-3"><a href="#!" className="text-body"><i
                                         className="fas fa-long-arrow-alt-left me-2"></i>Continue shopping</a></h5>
                                     <hr />
 
-                                    <div className="d-flex justify-content-between align-items-center mb-4">
+                                    <div className={`${styles['box-head-mob']} d-flex justify-content-between align-items-center mb-4`}>
                                         <div>
                                             <p className="mb-1">Shopping cart</p>
                                             <p className="mb-0">You have {cart.quantity} items in your cart</p>
                                         </div>
                                         <div>
-                                            <p className="mb-0"><span className="text-muted">Sort by:</span> <a href="#!"
+                                            <p className={`${styles['box-p-mob']} mb-0`}><span className="text-muted">Sort by:</span> <a href="#!"
                                                 className="text-body">price <i className="fas fa-angle-down mt-1"></i></a></p>
                                         </div>
                                     </div>
@@ -46,7 +46,7 @@ const index = () => {
                                         return (
                                             <div className="card mb-3">
                                                 <div className="card-body">
-                                                    <div className="d-flex justify-content-between">
+                                                    <div className={`${styles['content-box-mob']} d-flex justify-content-between`}>
                                                         <div className="d-flex flex-row align-items-center">
                                                             <div>
                                                                 <Image
@@ -61,17 +61,35 @@ const index = () => {
                                                             </div>
                                                             <div className="ms-3">
                                                                 <h5>{product.postTopicName}</h5>
-                                                                <p className="small mb-0">{product.postVariantName1}</p>
+                                                                <p className="small fw-bold mb-0">{product.postVariantName1}</p>
                                                             </div>
                                                         </div>
                                                         <div className="d-flex flex-row align-items-center">
-                                                            <div style={{ width: "50px" }}>
-                                                                <h5 className="fw-normal mb-0">{product.quantity}</h5>
+                                                            <div className={styles['product-quantity']} style={{ width: "100px" }}>
+                                                                <Image 
+                                                                    src='/images/plus.png'
+                                                                    height='10'
+                                                                    width='10'
+                                                                    objectFit='fill'
+                                                                    layout='responsive'
+                                                                    alt='before-img'
+                                                                    className={styles['before-img']}
+                                                                />
+                                                                <h5 className="fw-normal ps-3 pe-3 mb-0">{product.quantity}</h5>
+                                                                <Image 
+                                                                    src='/images/minus.png'
+                                                                    height='10'
+                                                                    width='10'
+                                                                    objectFit='fill'
+                                                                    layout='responsive'
+                                                                    alt='after-img'
+                                                                    className={styles['after-img']}
+                                                                />
                                                             </div>
                                                             <div style={{ width: "80px" }}>
                                                                 <h5 className="mb-0">{product.price}</h5>
                                                             </div>
-                                                            <a href="#!" style={{ color: "#cecece" }}><i className="fas fa-trash-alt"></i></a>
+                                                            <a href="#!" style={{ color: "#d7b56d" }}><i className="fas fa-trash-alt"></i></a>
                                                         </div>
                                                     </div>
                                                 </div>
