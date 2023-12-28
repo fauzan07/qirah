@@ -4,7 +4,7 @@ import Link from "next/link";
 import Head from "next/head";
 import Image from "next/image";
 import { IoReorderThree } from "react-icons/io5";
-import { FaCartPlus } from "react-icons/fa";
+import { FaCartPlus, FaUser } from "react-icons/fa";
 import styles from "../master/header.module.scss";
 import { isMobile } from "react-device-detect";
 import { useSelector } from "react-redux";
@@ -137,6 +137,9 @@ const Header = () => {
                       <span className="visually-hidden">unread messages</span>
                     </span>
                   </button>
+                </Link>
+                <Link className={`${styles['pad-a']} nav-link pe-5`} href="/contact">
+                <FaUser /> Sign In
                 </Link>
               </Nav>
             </Navbar.Collapse>
