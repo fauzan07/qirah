@@ -1,21 +1,31 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from "react-redux";
+import { login } from "../../redux/apiCalls";
 import Link from 'next/link';
 import Image from 'next/image';
 import styles from './login.module.scss'
+import { useRouter } from 'next/router';
 
-const login = () => {
+const loginPage = () => {
 
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
     const dispatch = useDispatch();
-    const { isFetching, error } = useSelector((state) => state.user);
+    const { isFetching, error, currentUser } = useSelector((state) => state.user);
 
     const handleClick = (e) => {
         e.preventDefault();
         login(dispatch, { username, password });
     };
+
+    const router = useRouter();
+
+    useEffect(()=>{
+        if(currentUser){
+            router.push("/")
+        }
+    }, [currentUser])
 
     return (
         <>
@@ -36,16 +46,23 @@ const login = () => {
                         <div className="col-md-5 col-lg-5">
                             <div className="mt-4 px-5 py-4 bg-white border shadow-lg rounded signup-box">
                                 <h2 className="text-center">Login</h2>
-                                <div>{error && <Error>Something went wrong...</Error>}</div>
+                                <div>
+                                    {error && (
+                                        <div style={{ color: 'red' }}>
+                                            <p>{error}</p>
+                                            <p>{error.code}</p>
+                                        </div>
+                                    )}
+                                </div>
                                 <div className="form-group">
-                                    <label htmlFor="email">UserName</label>
-                                    <input type="text" className="form-control" id="email" name="email" value={username} placeholder="Enter a username" onChange={(event) => setUsername(event.target.value)} />
+                                    <label htmlFor="username">UserName</label>
+                                    <input type="name" className="form-control" id="username" name="username" value={username} placeholder="Enter a username" onChange={(event) => setUsername(event.target.value)} />
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="password">Password</label>
                                     <input type="password" className="form-control" id="password" name="password" value={password} placeholder="Enter a password" onChange={(event) => setPassword(event.target.value)} />
                                 </div>
-                                <div className="form-group">
+                                <div className="form-group text-center mt-4">
                                     <button onClick={handleClick} className="btn btn-primary btn-md btn-block waves-effect text-center m-b-20" disabled={isFetching}>Login Now</button>
                                 </div>
                                 {/* <div className="or py-3">
@@ -65,4 +82,4 @@ const login = () => {
     )
 }
 
-export default login
+export default loginPage

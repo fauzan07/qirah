@@ -5,11 +5,27 @@ import Link from 'next/link';
 import Button from 'react-bootstrap/Button';
 import { CiLock } from "react-icons/ci";
 import { FaRegStar } from "react-icons/fa";
+import { FaPlus, FaArrowDown, FaMinus } from "react-icons/fa";
 import styles from './cart.module.scss';
 import { useSelector } from "react-redux";
 
+
 const index = () => {
     const cart = useSelector((state) => state.cart);
+
+
+    const [quantity, setQuantity] = useState(1);
+
+    const handleIncrement = () => {
+        setQuantity(quantity + 1);
+    };
+
+    const handleDecrement = () => {
+        if (quantity > 1) {
+            setQuantity(quantity - 1);
+        }
+    };
+
 
     return (
         <>
@@ -42,7 +58,7 @@ const index = () => {
                                         </div>
                                     </div>
                                     {cart.products.map((product) => {
-                                        const firstImage = product.postImage.length > 0 ? product.postImage[3] : '';
+                                        const firstImage = product.postImage && product.postImage.length > 3 ? product.postImage[3] : '';
                                         return (
                                             <div className="card mb-3">
                                                 <div className="card-body">
@@ -66,25 +82,9 @@ const index = () => {
                                                         </div>
                                                         <div className="d-flex flex-row align-items-center">
                                                             <div className={styles['product-quantity']} style={{ width: "80px" }}>
-                                                                <Image 
-                                                                    src='/images/minus.png'
-                                                                    height='10'
-                                                                    width='10'
-                                                                    objectFit='fill'
-                                                                    layout='responsive'
-                                                                    alt='before-img'
-                                                                    className={styles['before-img']}
-                                                                />
-                                                                <h5 className="fw-normal ps-3 pe-3 mb-0">{product.quantity}</h5>
-                                                                <Image 
-                                                                    src='/images/plus.png'
-                                                                    height='10'
-                                                                    width='10'
-                                                                    objectFit='fill'
-                                                                    layout='responsive'
-                                                                    alt='after-img'
-                                                                    className={styles['after-img']}
-                                                                />
+                                                                <button onClick={handleDecrement}><FaMinus /></button>
+                                                                <h5 className="fw-normal ps-3 pe-3 mb-0">{quantity}</h5>
+                                                                <button onClick={handleIncrement}><FaPlus /></button>
                                                             </div>
                                                             <div style={{ width: "80px" }}>
                                                                 <h5 className="mb-0">{product.price}</h5>
@@ -100,21 +100,21 @@ const index = () => {
                             </div>
                         </div >
                         <div className={`${styles['chckout-div']} text-end mt-3`}>
-                        
-                            <p>Item total<span className='ms-5'>$200</span></p>
+
+                            <p>Item total<span className='ms-5'>{cart.total}</span></p>
                             <p>Delivery Fees<span className='ms-5'>FREE</span></p>
-                            <p>Grand Total<span className='ms-5'>$200</span></p>
-                        
-                        <Link href="/checkout">
-                            <Button
-                                style={{ margin: '10px 0px 30px', maxWidth: '250px' }}
-                                className={`${styles['newsbtn']} `}
-                                variant="outline-dark" id="button-addon2">
-                                <span className='px-2' style={{ marginTop: '-2px' }}><CiLock /></span>
-                                <span className='px-2'>Checkout</span>
-                                <span className='px-2'>Rs. {cart.total}.00</span>
-                            </Button>
-                        </Link>
+                            <p>Grand Total<span className='ms-5'>{cart.total}</span></p>
+
+                            <Link href="/checkout">
+                                <Button
+                                    style={{ margin: '10px 0px 30px', maxWidth: '250px' }}
+                                    className={`${styles['newsbtn']} `}
+                                    variant="outline-dark" id="button-addon2">
+                                    <span className='px-2' style={{ marginTop: '-2px' }}><CiLock /></span>
+                                    <span className='px-2'>Checkout</span>
+                                    <span className='px-2'>Rs. {cart.total}.00</span>
+                                </Button>
+                            </Link>
                         </div>
                         <div className='text-center py-5'><h3>YOU MAY ALSO LIKE</h3></div>
                         <div className='row'>

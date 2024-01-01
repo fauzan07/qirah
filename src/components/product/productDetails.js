@@ -43,7 +43,7 @@ const ProductDetailsContainer = ({
   const handleFormSubmit = async (values, actions) => {
     try {
       await axios.post(
-        "https://software-bazaar-default-rtdb.firebaseio.com/leadform.json",
+        "https://qirah-dashboard-default-rtdb.firebaseio.com/leadform.json",
         values
       );
       actions.resetForm();

@@ -1,7 +1,7 @@
 import { NextSeo } from 'next-seo';
 import MasterLayout from '../src/components/layouts/master';
 import SeoSchema from "../src/components/seo/schema";
-import LoginContainer from "../src/components/login";
+import LoginPageContainer from "../src/components/login";
 import axios from 'axios';
 
 const login = () => {
@@ -25,7 +25,7 @@ const login = () => {
         <>
             <NextSeo title="qirah" description="qirah" canonical="/success" />
             {/* <SeoSchema data={schemaData} /> */}
-            <LoginContainer />
+            <LoginPageContainer />
         </>
     )
 }

@@ -4,7 +4,7 @@ import SeoSchema from "../src/components/seo/schema";
 import CartContainer from "../src/components/cart";
 import axios from 'axios';
 
-const Cart = () => {
+const Cart = (productData) => {
     let schemaData = {
         "@context": "https://schema.org",
         "@type": "Organization",
@@ -25,7 +25,7 @@ const Cart = () => {
         <>
             <NextSeo title="qirah" description="qirah" canonical="/blog" />
             {/* <SeoSchema data={schemaData} /> */}
-            <CartContainer />
+            <CartContainer productData={productData} />
         </>
     )
 }

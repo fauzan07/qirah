@@ -138,8 +138,8 @@ const Header = () => {
                     </span>
                   </button>
                 </Link>
-                <Link className={`${styles['pad-a']} nav-link pe-5`} href="/contact">
-                <FaUser /> Sign In
+                <Link className={`${styles['pad-a']} nav-link pe-5`} href="/login">
+                  <FaUser /> Sign In
                 </Link>
               </Nav>
             </Navbar.Collapse>

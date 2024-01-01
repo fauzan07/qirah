@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 
+
 const Payment = ({ styles }) => {
+
   return (
     <>
       <Container>
@@ -16,19 +18,22 @@ const Payment = ({ styles }) => {
                 name="formHorizontalRadios"
                 id="formHorizontalRadios1"
               />
-               <Form.Check
+              <Form.Check
                 type="radio"
                 label="UPI"
                 name="formHorizontalRadios"
                 id="formHorizontalRadios2"
               />
-               <Form.Check
+              <Form.Check
                 type="radio"
                 label="COD (Cash On Delivery)"
                 name="formHorizontalRadios"
                 id="formHorizontalRadios3"
               />
-              <Button variant="outline-dark" href="">Continue</Button>
+              <Button
+                variant="outline-dark">
+                Continue
+              </Button>
             </Form>
           </Col>
         </Row>
