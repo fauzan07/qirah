@@ -81,10 +81,10 @@ const index = () => {
                                                             </div>
                                                         </div>
                                                         <div className="d-flex flex-row align-items-center">
-                                                            <div className={styles['product-quantity']} style={{ width: "80px" }}>
-                                                                <button onClick={handleDecrement}><FaMinus /></button>
+                                                            <div className={styles['product-quantity']} style={{ width: "110px" }}>
+                                                                <Button variant='outline-dark' style={{fontSize:'8px'}} size='sm' onClick={handleDecrement}><FaMinus /></Button>
                                                                 <h5 className="fw-normal ps-3 pe-3 mb-0">{quantity}</h5>
-                                                                <button onClick={handleIncrement}><FaPlus /></button>
+                                                                <Button variant='outline-dark' style={{fontSize:'8px'}} size='sm' onClick={handleIncrement}><FaPlus /></Button>
                                                             </div>
                                                             <div style={{ width: "80px" }}>
                                                                 <h5 className="mb-0">{product.price}</h5>
