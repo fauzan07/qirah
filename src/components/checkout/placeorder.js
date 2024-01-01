@@ -38,7 +38,7 @@ const Placeorder = ({ styles }) => {
         <Row className='justify-content-center mt-5'>
           <Col lg={6}>
             <h3>Shipping</h3>
-            <p>Address:ajdhs,andnfeunfu, cwhgfujndfjdmncin,262250.nuhfiefn</p>
+            <p>Address:5,Dhobi Street, tawawala building, 2nd floor, mohd ali road, mumbai 400003</p>
             <hr />
             <h3>Payment Method</h3>
             <p>Method : Stripe</p>

@@ -26,6 +26,9 @@ const Header = () => {
     });
   }
 
+  const currentUser = useSelector((state) => state.user);
+  // const { userInfo } = userLogin;
+
   const quantity = useSelector(state => state.cart.quantity)
 
   return (
@@ -138,9 +141,15 @@ const Header = () => {
                     </span>
                   </button>
                 </Link>
-                <Link className={`${styles['pad-a']} nav-link pe-5`} href="/login">
-                  <FaUser /> Sign In
-                </Link>
+                {currentUser && currentUser.currentUser ? (
+                  <Link className={`${styles['pad-a']} nav-link pe-5`} href="/">
+                    {currentUser.currentUser.userName}
+                  </Link>
+                ) : (
+                  <Link className={`${styles['pad-a']} nav-link pe-5`} href="/login">
+                    <FaUser /> Sign In
+                  </Link>
+                )}
               </Nav>
             </Navbar.Collapse>
             <Navbar.Toggle aria-controls="navbarScroll" id="navcolbtn">

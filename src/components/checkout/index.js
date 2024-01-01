@@ -6,6 +6,8 @@ import { Container, Row, Col, Form, Tab, Tabs } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import parse from "html-react-parser";
 import Card from "react-bootstrap/Card";
+import { useSelector } from "react-redux";
+import CheckoutLogin from './checkoutLogin'
 import Shipping from "./shipping";
 import Payment from "./payment";
 import Placeorder from "./placeorder";
@@ -13,6 +15,7 @@ import Placeorder from "./placeorder";
 
 const index = () => {
 
+  const user = useSelector((state) => state.user);
 
   return (
     <section className={styles["checkout-section"]}>
@@ -25,9 +28,14 @@ const index = () => {
               className="mb-3"
               justify
             >
-              <Tab eventKey="signin" title="Sign In">
-                Tab content for Home
-              </Tab>
+              {!user && (
+                <Tab eventKey="signin" title="Sign In">
+                  <CheckoutLogin />
+                </Tab>
+              )}
+              {user && (
+                <></>
+              )}
               <Tab eventKey="shipping" title="Shipping">
                 <Shipping styles={styles} />
               </Tab>

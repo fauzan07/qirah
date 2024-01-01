@@ -14,16 +14,23 @@ const Payment = ({ styles }) => {
               <Form.Label className={styles['txt-lbl']}>Select Method</Form.Label>
               <Form.Check
                 type="radio"
+                label="Stripe or Credit Card"
+                name="formHorizontalRadios"
+                id="formHorizontalRadios1"
+                defaultChecked
+              />
+              {/* <Form.Check
+                type="radio"
                 label="Pay Pal or Credit Card"
                 name="formHorizontalRadios"
                 id="formHorizontalRadios1"
-              />
-              <Form.Check
+              /> */}
+              {/* <Form.Check
                 type="radio"
                 label="UPI"
                 name="formHorizontalRadios"
                 id="formHorizontalRadios2"
-              />
+              /> */}
               <Form.Check
                 type="radio"
                 label="COD (Cash On Delivery)"
