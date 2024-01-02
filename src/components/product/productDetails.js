@@ -222,6 +222,7 @@ const ProductDetailsContainer = ({
 
               <div className={`${styles["price-box"]} mt-3`}>
                 <Button
+                  href="/cart"
                   onClick={handleClick}
                   style={{ margin: "20px 0px", width: "100%" }}
                   className={styles["newsbtn"]}

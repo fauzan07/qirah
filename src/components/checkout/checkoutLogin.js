@@ -18,6 +18,14 @@ const checkoutLogin = () => {
         login(dispatch, { username, password });
     };
 
+    const router = useRouter();
+
+    useEffect(() => {
+        if (currentUser) {
+            router.push("/checkout")
+        }
+    }, [currentUser])
+
     return (
         <section className={styles['login-section']}>
             <Container>
@@ -53,7 +61,7 @@ const checkoutLogin = () => {
                                 <input type="password" className="form-control" id="password" name="password" value={password} placeholder="Enter a password" onChange={(event) => setPassword(event.target.value)} />
                             </div>
                             <div className="form-group text-center mt-4">
-                                <button onClick={handleClick} className="btn btn-primary btn-md btn-block waves-effect text-center m-b-20" disabled={isFetching}>Login Now</button>
+                                <button onClick={handleClick} className="btn btn-primary btn-md btn-block waves-effect text-center m-b-20">Login Now</button>
                             </div>
                             {/* <div className="or py-3">
                             <h3><span>or</span></h3>

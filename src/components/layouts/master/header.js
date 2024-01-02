@@ -7,7 +7,7 @@ import { IoReorderThree } from "react-icons/io5";
 import { FaCartPlus, FaUser } from "react-icons/fa";
 import styles from "../master/header.module.scss";
 import { isMobile } from "react-device-detect";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 if (typeof window !== "undefined") {
   window.dataLayer = window.dataLayer || [];
   function gtag() {
@@ -30,6 +30,12 @@ const Header = () => {
   // const { userInfo } = userLogin;
 
   const quantity = useSelector(state => state.cart.quantity)
+
+  const dispatch = useDispatch();
+
+  // const logoutHandler = () => {
+  //   dispatch(logout());
+  // };
 
   return (
     <>
@@ -142,9 +148,11 @@ const Header = () => {
                   </button>
                 </Link>
                 {currentUser && currentUser.currentUser ? (
-                  <Link className={`${styles['pad-a']} nav-link pe-5`} href="/">
-                    {currentUser.currentUser.userName}
-                  </Link>
+                  <NavDropdown title={currentUser.currentUser.userName} id="username">
+                    {/* <NavDropdown.Item onClick={logoutHandler}>
+                      Logout
+                    </NavDropdown.Item> */}
+                  </NavDropdown>
                 ) : (
                   <Link className={`${styles['pad-a']} nav-link pe-5`} href="/login">
                     <FaUser /> Sign In

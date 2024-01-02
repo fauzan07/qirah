@@ -11,41 +11,29 @@ import CheckoutLogin from './checkoutLogin'
 import Shipping from "./shipping";
 import Payment from "./payment";
 import Placeorder from "./placeorder";
+import { LinkContainer } from 'react-router-bootstrap'
+
 
 
 const index = () => {
 
-  const user = useSelector((state) => state.user);
+  const currentUser = useSelector((state) => state.user);
+  console.log(currentUser)
 
   return (
     <section className={styles["checkout-section"]}>
       <Container>
         <Row>
           <Col lg={12}>
-            <Tabs
-              defaultActiveKey="signin"
-              id="fill-tab-example"
-              className="mb-3"
-              justify
-            >
-              {!user && (
-                <Tab eventKey="signin" title="Sign In">
-                  <CheckoutLogin />
-                </Tab>
-              )}
-              {user && (
-                <></>
-              )}
-              <Tab eventKey="shipping" title="Shipping">
+            {currentUser && currentUser.currentUser ? (
+              <>
                 <Shipping styles={styles} />
-              </Tab>
-              <Tab eventKey="payment" title="Payment">
                 <Payment styles={styles} />
-              </Tab>
-              <Tab eventKey="palceorder" title="Place Order" >
                 <Placeorder styles={styles} />
-              </Tab>
-            </Tabs>
+              </>
+            ) : (
+              <CheckoutLogin />
+            )}
           </Col>
         </Row>
       </Container>

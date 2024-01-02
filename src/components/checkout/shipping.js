@@ -7,7 +7,7 @@ const Shipping = ({ styles }) => {
   const handleFormSubmit = async (values, actions) => {
     try {
       await axios.post(
-        "https://qirah-dashboard-default-rtdb.firebaseio.com/userhippingData.json",
+        "https://qirah-dashboard-default-rtdb.firebaseio.com/usershippingData.json",
         values
       );
       actions.resetForm();
@@ -23,7 +23,7 @@ const Shipping = ({ styles }) => {
   return (
     <>
       <Container>
-        <Row className='justify-content-center mt-5'>
+        <Row className='justify-content-start mt-5'>
           <Col lg={6}>
 
             <h3 className='mb-4'>Shipping</h3>
