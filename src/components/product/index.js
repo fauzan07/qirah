@@ -64,7 +64,7 @@ const Product = ({ productData: initialProductData }) => {
   const handleShow = () => setShow(true);
 
   return (
-    <section className={styles["products-main"]}>
+    <section className={styles["products-main"]} id="shop">
       <Container>
         <Row className="justify-content-center text-center">
           <h6 style={{ color: "#D7B56D" }}>Our Popular Products</h6>

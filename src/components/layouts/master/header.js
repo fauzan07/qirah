@@ -112,26 +112,10 @@ const Header = () => {
                 <Link className={`${styles['pad-a']} nav-link pe-5`} href="/">
                   Home
                 </Link>
-                <Link className={`${styles['pad-a']} nav-link pe-5`} href="/">
+                <Link className={`${styles['pad-a']} nav-link pe-5`} href="/#shop">
                   Shop
                 </Link>
-                <NavDropdown className={`${styles['pad-a1']} pe-5`} title="Page's">
-                  <NavDropdown.Item>
-                    <Link className={`${styles['']} nav-link pe-5`} href="/">
-                      About
-                    </Link>
-                  </NavDropdown.Item>
-                  <NavDropdown.Item>
-                    <Link className={`${styles['']} nav-link pe-5`} href="/blog">
-                      Blog
-                    </Link>
-                  </NavDropdown.Item>
-                  <NavDropdown.Item>
-                    <Link className={`${styles['']} nav-link pe-5`} href="/">
-                      Faq
-                    </Link>
-                  </NavDropdown.Item>
-                </NavDropdown>
+                
                 <Link className={`${styles['pad-a']} nav-link pe-5`} href="/contact">
                   Contact
                 </Link>
