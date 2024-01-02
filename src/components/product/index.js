@@ -48,20 +48,23 @@ const Product = ({ productData: initialProductData }) => {
     };
   }, []);
 
-  const handleClick = () => {
+  const addProductInCart = (item) => {
+    setQuantity(1);
+
+    item["price"] = item.postPriceName;
+    item["quantity"] = 1;
+
+    console.log(item);
     dispatch(
-      addProduct({
-        product,
-        quantity,
-        price: product.price * quantity,
-      })
+      addProduct(item)
     );
+    setShow(true);
   };
 
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  // const handleShow = () => setShow(true);
 
   return (
     <section className={styles["products-main"]} id="shop">
@@ -148,7 +151,7 @@ const Product = ({ productData: initialProductData }) => {
                             </Dropdown.Item>
                           </DropdownButton>
                           <Button
-                            onClick={handleShow}
+                            onClick={() => addProductInCart(item)}
                             className={styles["newsbtn"]}
                             variant="outline-secondary"
                             id="button-addon2"
@@ -174,7 +177,7 @@ const Product = ({ productData: initialProductData }) => {
               <Button variant="outline-dark" size="sm" onClick={handleClose}>
                 Continue Shopping
               </Button>
-              <Button variant="outline-dark" size="sm" onClick={handleClick}>
+              <Button variant="outline-dark" size="sm" href="/cart">
                 Go To Cart
               </Button>
             </Modal.Footer>
