@@ -14,6 +14,8 @@ const index = () => {
     const cart = useSelector((state) => state.cart);
 
 
+    console.log(cart);
+
     const [quantity, setQuantity] = useState(1);
 
     const handleIncrement = () => {
@@ -77,7 +79,7 @@ const index = () => {
                                                             </div>
                                                             <div className="ms-3">
                                                                 <h5>{product.postTopicName}</h5>
-                                                                <p className="small fw-bold mb-0">{product.postVariantName1}</p>
+                                                                <p className="small fw-bold mb-0">{product.selectedVariantName ? product.selectedVariantName : product.postVariantName1}</p>
                                                             </div>
                                                         </div>
                                                         <div className="d-flex flex-row align-items-center">
@@ -87,7 +89,7 @@ const index = () => {
                                                                 <Button variant='outline-dark' style={{fontSize:'8px'}} size='sm' onClick={handleIncrement}><FaPlus /></Button>
                                                             </div>
                                                             <div style={{ width: "80px" }}>
-                                                                <h5 className="mb-0">{product.price}</h5>
+                                                                <h5 className="mb-0">{product.selectedVariantPrice ? product.selectedVariantPrice :  product.price}</h5>
                                                             </div>
                                                             <a href="#!" style={{ color: "#d7b56d" }}><i className="fas fa-trash-alt"></i></a>
                                                         </div>

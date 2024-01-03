@@ -48,13 +48,13 @@ const Product = ({ productData: initialProductData }) => {
     };
   }, []);
 
-  const addProductInCart = (item) => {
+  const addProductInCart = (item,key) => {
     setQuantity(1);
-
-    item["price"] = item.postPriceName;
+    item["selectedVariantName"] = selectedVariants[key] ? selectedVariants[key]["variantName"] : item.postVariantName1;
+    item["selectedVariantPrice"] = selectedVariants[key] ? selectedVariants[key]["price"] : item.postPriceName;
     item["quantity"] = 1;
-
-    console.log(item);
+    // console.log(item,key);
+    // console.log(selectedVariants[key]);
     dispatch(
       addProduct(item)
     );
@@ -151,7 +151,7 @@ const Product = ({ productData: initialProductData }) => {
                             </Dropdown.Item>
                           </DropdownButton>
                           <Button
-                            onClick={() => addProductInCart(item)}
+                            onClick={() => addProductInCart(item,key)}
                             className={styles["newsbtn"]}
                             variant="outline-secondary"
                             id="button-addon2"

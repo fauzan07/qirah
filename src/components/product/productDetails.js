@@ -59,6 +59,7 @@ const ProductDetailsContainer = ({
   const [isDatePickerFocused, setDatePickerFocused] = useState(false);
 
   const [selectedVariants, setSelectedVariants] = useState({});
+  const [selectedVariant, setSelectedVariant] = useState({});
   const [productDetailsData, setProductDetailsData] = useState(
     initialProductDetailsData
   );
@@ -67,9 +68,12 @@ const ProductDetailsContainer = ({
   const dispatch = useDispatch()
 
   const router = useRouter();
-  const { productId } = router.query;
+  const { productId } = 0;
 
   const handleVariantSelect = (productId, variant) => {
+    setSelectedVariant(variant);
+    // productId = "test";
+    console.log(productId);
     setSelectedVariants((prevVariants) => ({
       ...prevVariants,
       [productId]: variant,
@@ -126,13 +130,32 @@ const ProductDetailsContainer = ({
     setShowReviews(!showReviews);
   };
 
-  const handleClick = () => {
-    dispatch(addProduct({
-      product,
-      ...initialProductDetailsData,
-      quantity,
-      price: postPriceName * quantity
-    }))
+  const addProductInCart = () => {
+
+    // console.log(selectedVariants,productDetailsData,initialProductDetailsData);
+    
+    var item = {};
+    // setQuantity(1);
+    console.log(selectedVariant);
+    item["postImage"] = initialProductDetailsData["postImage"];
+    item["postTopicName"] = initialProductDetailsData["postTopicName"];
+    item["postVariantName1"] = initialProductDetailsData["postVariantName1"];
+    item["selectedVariantName"] = selectedVariant ? selectedVariant["variantName"] : item.postVariantName1;
+    item["selectedVariantPrice"] = selectedVariant ? selectedVariant["price"] : item.postPriceName;
+    item["selectedVariantPrice"] = parseInt(item["selectedVariantPrice"]) * quantity;
+    // // item["quantity"] = 1;
+    // console.log(item);
+    // // console.log(selectedVariants[key]);
+    dispatch(
+      addProduct(item)
+    );
+
+    // dispatch(addProduct({
+    //   product,
+    //   ...initialProductDetailsData,
+    //   quantity,
+    //   price: postPriceName * quantity
+    // }))
   }
 
   return (
@@ -167,7 +190,7 @@ const ProductDetailsContainer = ({
               </Carousel>
             </Col>
             <Col lg={5}>
-              <h3 className="mt-5">{`${postTopicName} (${selectedVariants[productId]?.variantName || "50 ml"
+              <h3 className="mt-5">{`${postTopicName} (${selectedVariants[productId]?.variantName || postVariantName1
                 })`}</h3>
 
               <div
@@ -190,7 +213,7 @@ const ProductDetailsContainer = ({
                     title={
                       selectedVariants[productId]
                         ? selectedVariants[productId].variantName
-                        : "50 ml"
+                        : postVariantName1
                     }
                     id="input-group-dropdown-1"
                   >
@@ -222,8 +245,8 @@ const ProductDetailsContainer = ({
 
               <div className={`${styles["price-box"]} mt-3`}>
                 <Button
-                  href="/cart"
-                  onClick={handleClick}
+                  href="#"
+                  onClick={() => addProductInCart()}
                   style={{ margin: "20px 0px", width: "100%" }}
                   className={styles["newsbtn"]}
                   variant="outline-dark"
