@@ -39,16 +39,16 @@ const Footer = () => {
               <h3 style={{ marginBottom: "35px" }}>Support</h3>
               <ul className={styles["info-list"]}>
                 <li>
-                  <Link href="/">Refund Policy</Link>
+                  <Link href="/refund">Refund Policy</Link>
                 </li>
                 <li>
-                  <Link href="/">Privacy Policy</Link>
+                  <Link href="/privacy">Privacy Policy</Link>
                 </li>
                 <li>
-                  <Link href="/">Shipping Policy</Link>
+                  <Link href="/shipping">Shipping Policy</Link>
                 </li>
                 <li>
-                  <Link href="/">Terms of Service </Link>
+                  <Link href="/terms">Terms of Service </Link>
                 </li>
               </ul>
             </div>
